@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CartContext } from "../CartContent"; // corrected the import path
+import { CartContext } from "../CartContent";
 import { FaAngleRight } from "react-icons/fa6";
 
 const Cart = () => {
@@ -7,8 +7,7 @@ const Cart = () => {
 
   // Calculate subtotal
   const subtotal = cartItems.reduce(
-    (total, item) =>
-      total + (parseFloat(item.price) || 0) * (parseInt(item.quantity) || 0),
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
@@ -47,9 +46,7 @@ const Cart = () => {
                       />
                       <span>{item.title}</span>
                     </td>
-                    <td className="py-2 px-4">
-                      ₦{parseFloat(item.price).toLocaleString()}
-                    </td>
+                    <td className="py-2 px-4">{item.price.toLocaleString()}</td>
                     <td className="py-2 px-4 flex items-center">
                       <button
                         onClick={() =>
@@ -79,10 +76,7 @@ const Cart = () => {
                       </button>
                     </td>
                     <td className="py-2 px-4">
-                      ₦
-                      {(
-                        parseFloat(item.price) * parseInt(item.quantity)
-                      ).toLocaleString()}
+                      {(item.price * item.quantity).toLocaleString()}
                     </td>
                     <td className="py-2 px-4">
                       <button
