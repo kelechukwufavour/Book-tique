@@ -118,7 +118,7 @@ const Cart = () => {
               <span>Delivery</span>
               <span>₦{delivery.toLocaleString()}</span>
             </div>
-            <div className="flex justify-between font-bold text-lg mb-4 text-xs md:text-base">
+            <div className="flex justify-between font-bold text-lg mb-4  md:text-base">
               <span>Total</span>
               <span>₦{total.toLocaleString()}</span>
             </div>
