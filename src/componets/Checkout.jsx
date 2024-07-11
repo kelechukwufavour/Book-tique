@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 import MastercardLogo from "../assets/mastercard.png"; // Replace with actual image paths
@@ -6,21 +6,40 @@ import VisaLogo from "../assets/visa.png"; // Replace with actual image paths
 import PaystackLogo from "../assets/paystack.png"; // Replace with actual image paths
 import VerveLogo from "../assets/verve.png"; // Replace with actual image paths
 
-const Checkout = () => {
+const Checkout = ({ cartItems }) => {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // State to track selected payment method
+
+  const handlePaymentMethodClick = (logo) => {
+    setSelectedPaymentMethod(logo); // Update selected payment method state
+  };
+
+  // Calculate total from cart items
+  const calculateTotal = () => {
+    let total = 0;
+    if (cartItems && cartItems.length > 0) {
+      cartItems.forEach((item) => {
+        total += item.quantity * item.price;
+      });
+    }
+    return total.toFixed(2);
+  };
+
+  console.log(cartItems); // Log cart items to check if they are correctly received
+
   return (
     <div className="w-full h-auto flex items-center justify-center flex-col p-4 md:p-10">
-      <h2 className="flex justify-center items-center text-[24px] md:text-[40px] text-[#626263]">
+      <h2 className="flex justify-center items-center text-2xl md:text-4xl text-[#626263]">
         Shopping Cart
-        <FaAngleRight className="w-6 h-6 md:w-8 md:h-8" />
-        <span className="text-[#6A5ACD]/50">Checkout</span>
+        <FaAngleRight className="w-8 h-8 md:w-10 md:h-10" />
+        <span className="text-[#6A5ACD]/50 ml-2">Checkout</span>
       </h2>
-      <p className="text-black relative">
+      <p className="text-black relative mt-4 md:mt-6">
         Returning customer?{" "}
         <Link to="/login" className="text-[#6A5ACD]/75">
           Click here to login
         </Link>
-        <hr className="absolute left-0 bottom-0 w-full border-t-2 border-gray-500 mt-1" />
       </p>
+      <hr className="w-full border-t-2 border-gray-500 mt-1" />
       <div className="flex flex-col md:flex-row w-full mt-4">
         {/* Billing Details Form */}
         <div className="md:w-2/3 md:pr-8">
@@ -132,29 +151,58 @@ const Checkout = () => {
               <span>Subtotal</span>
             </div>
             <hr className="border-t border-gray-300 my-2" />
-            <div className="flex justify-between mb-2 text-xs md:text-sm">
-              <span>Item Name</span>
-              <span>₦Subtotal</span>
-            </div>
+            {/* Render cart items dynamically */}
+            {cartItems && cartItems.length > 0 ? (
+              cartItems.map((item, index) => (
+                <div key={index} className="flex justify-between mb-2 text-xs md:text-sm">
+                  <span>{item.name}</span>
+                  <span>₦{(item.quantity * item.price).toFixed(2)}</span>
+                </div>
+              ))
+            ) : (
+              <p>No items in cart</p>
+            )}
             <hr className="border-t border-gray-300 my-2" />
-            <div className="flex justify-between font-bold text-lg mb-4 md:text-sm">
-              <span>Total</span>
-              <span>₦Total</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <p className="text-xs text-center text-[black]">
+            <div className="flex items-center justify-center mb-4">
+              <p className="text-xs text-[black] mt-2">
                 Secured by Paystack
               </p>
             </div>
-            <div className="flex items-center justify-center space-x-2">
-              {/* Logos in a single box */}
-              <div className="bg-white border border-[#6A5ACD] rounded-lg p-2 md:p-4 w-full text-center">
-                <div className="flex items-center justify-center space-x-2 md:space-x-4 mt-2">
-                  <img src={MastercardLogo} alt="Mastercard" className="h-6 md:h-8 mx-auto" />
-                  <img src={VisaLogo} alt="Visa" className="h-6 md:h-8 mx-auto" />
-                  <img src={PaystackLogo} alt="Paystack" className="h-6 md:h-8 mx-auto" />
-                  <img src={VerveLogo} alt="Verve" className="h-6 md:h-8 mx-auto" />
-                </div>
+            <div className="flex items-center justify-center space-x-4 mb-4">
+              {/* Logos in a rectangle box */}
+              <div className="border border-[#6A5ACD] rounded-lg p-2 md:p-4 w-full text-center flex justify-center items-center space-x-4">
+                <img
+                  src={MastercardLogo}
+                  alt="Mastercard"
+                  className={`h-8 cursor-pointer ${
+                    selectedPaymentMethod === MastercardLogo ? "opacity-50" : ""
+                  }`}
+                  onClick={() => handlePaymentMethodClick(MastercardLogo)}
+                />
+                <img
+                  src={VisaLogo}
+                  alt="Visa"
+                  className={`h-8 cursor-pointer ${
+                    selectedPaymentMethod === VisaLogo ? "opacity-50" : ""
+                  }`}
+                  onClick={() => handlePaymentMethodClick(VisaLogo)}
+                />
+                <img
+                  src={PaystackLogo}
+                  alt="Paystack"
+                  className={`h-8 cursor-pointer ${
+                    selectedPaymentMethod === PaystackLogo ? "opacity-50" : ""
+                  }`}
+                  onClick={() => handlePaymentMethodClick(PaystackLogo)}
+                />
+                <img
+                  src={VerveLogo}
+                  alt="Verve"
+                  className={`h-8 cursor-pointer ${
+                    selectedPaymentMethod === VerveLogo ? "opacity-50" : ""
+                  }`}
+                  onClick={() => handlePaymentMethodClick(VerveLogo)}
+                />
               </div>
             </div>
             <p className="text-xs text-center text-[black] mt-2">

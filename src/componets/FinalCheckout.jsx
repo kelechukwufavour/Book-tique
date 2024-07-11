@@ -1,65 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PaystackLogo from "../assets/paystack.png"; // Replace with actual image path
 
-const FinalCheckout = ({ orderDetails }) => {
-  if (!orderDetails) {
-    // Handle case where orderDetails is not provided or empty
-    return <div>Loading...</div>;
-  }
+const FinalCheckout = ({ order }) => {
+  const { orderNumber, date, total, paymentMethod } = order;
+
+  const handlePayNow = () => {
+    // Handle Pay Now functionality
+  };
+
+  const handleCancelOrder = () => {
+    // Handle Cancel Order functionality
+  };
 
   return (
-    <div className="w-full h-auto flex items-center justify-center flex-col p-10">
-      <h2 className="text-4xl md:text-6xl text-[#6A5ACD]">Final Checkout</h2>
-      <div className="w-full md:w-2/3 mt-8">
-        <div className="bg-white rounded shadow-md border border-[#6A5ACD] p-6 mb-6">
-          <h3 className="text-2xl md:text-4xl font-bold mb-4">Order Summary</h3>
-          <div className="space-y-4">
-            {/* Display order details */}
-            <div>
-              <p className="font-medium">Name: {orderDetails.firstName} {orderDetails.lastName}</p>
-              <p className="font-medium">Address: {orderDetails.address}, {orderDetails.city}, {orderDetails.state}</p>
-              <p className="font-medium">Email: {orderDetails.email}</p>
-              <p className="font-medium">Phone: {orderDetails.phone}</p>
-              <p className="font-medium">Order Notes: {orderDetails.orderNotes}</p>
-            </div>
-            {/* Display payment details */}
-            <div>
-              <h4 className="text-lg md:text-xl font-bold mb-2">Payment Method</h4>
-              <p className="font-medium">{orderDetails.paymentMethod}</p>
-            </div>
-            {/* Display order items */}
-            <div>
-              <h4 className="text-lg md:text-xl font-bold mb-2">Order Items</h4>
-              <ul className="space-y-2">
-                {orderDetails.items.map((item) => (
-                  <li key={item.id} className="flex justify-between">
-                    <span>{item.title}</span>
-                    <span>₦{item.price.toLocaleString()} x {item.quantity}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Display totals */}
-            <div className="flex justify-between font-bold text-lg md:text-xl">
-              <span>Subtotal</span>
-              <span>₦{orderDetails.subtotal.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between font-bold text-lg md:text-xl">
-              <span>Delivery</span>
-              <span>₦{orderDetails.delivery.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between font-bold text-lg md:text-xl">
-              <span>Total</span>
-              <span>₦{orderDetails.total.toLocaleString()}</span>
-            </div>
-          </div>
+    <div className="flex items-center justify-center flex-col p-4 md:p-10">
+      <h3 className="text-xl md:text-2xl font-bold mb-4">Check-out Details</h3>
+      <div className="bg-white rounded shadow-md p-6 mb-6">
+        <p>Order Number: {orderNumber}</p>
+        <p>Date: {date}</p>
+        <p>Total: {total}</p>
+        <div className="flex items-center justify-between mt-4">
+          <p>Payment Method:</p>
+          <img src={paymentMethod} alt="Payment Method" className="h-8" />
         </div>
-        {/* Proceed to payment button */}
-        <Link to="/payment">
-          <button className="w-full bg-blue-500 text-white px-4 py-2 rounded">
-            Proceed to Payment
+      </div>
+      <div className="bg-white rounded shadow-md border border-[#6A5ACD] p-6">
+        <p className="mb-4">Thank you for your order, please click the button below to pay with Paystack.</p>
+        <div className="flex justify-between">
+          <button
+            onClick={handlePayNow}
+            className="bg-[#6A5ACD] text-[#d8d9da] px-4 py-2 rounded-full"
+          >
+            PAY NOW
           </button>
-        </Link>
+          <button
+            onClick={handleCancelOrder}
+            className="bg-[#6A5ACD] text-white px-4 py-2 rounded-full"
+          >
+            CANCEL ORDER
+          </button>
+        </div>
       </div>
     </div>
   );

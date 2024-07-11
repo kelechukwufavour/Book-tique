@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     const itemPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, "")); // Convert price to a number
-  
+
     setCartItems((prevItems) => {
       const itemIndex = prevItems.findIndex((i) => i.title === item.title);
       if (itemIndex !== -1) {
@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
       toast.success("Item added to cart!");
       return [...prevItems, { ...item, price: itemPrice, quantity: 1 }];
     });
-  };  
+  };
 
   const removeFromCart = (title) => {
     setCartItems((prevItems) =>
