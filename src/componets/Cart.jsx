@@ -22,7 +22,7 @@ const Cart = () => {
 
   return (
     <div className="w-full h-auto flex items-center justify-center flex-col p-4 md:p-10">
-      <h2 className="flex justify-center items-center text-[24px] md:text-[40px] text-[#6A5ACD]">
+      <h2 className="flex justify-center items-center text-[24px] md:text-[40px] text-[#626263]">
         Shopping Cart
         <FaAngleRight className="w-6 h-6 md:w-8 md:h-8" />
         <span className="text-[#6A5ACD]/50">Checkout</span>
@@ -114,17 +114,20 @@ const Cart = () => {
               <span>Subtotal</span>
               <span>₦{subtotal.toLocaleString()}</span>
             </div>
+            <hr className="border-t border-gray-300 my-2" />
             <div className="flex justify-between mb-2 text-xs md:text-base">
               <span>Delivery</span>
               <span>₦{delivery.toLocaleString()}</span>
             </div>
-            <div className="flex justify-between font-bold text-lg mb-4  md:text-base">
+            <hr className="border-t border-gray-300 my-2" />
+            <div className="flex justify-between font-bold text-lg mb-4 md:text-base">
               <span>Total</span>
               <span>₦{total.toLocaleString()}</span>
             </div>
+            <hr className="border-t border-gray-300 my-2" />
             <Link to="/checkout">
-              <button className="w-full bg-blue-500 text-white px-4 py-2 rounded">
-                Proceed to Check-out
+              <button className="w-full md:w-auto bg-[#6A5ACD] text-[#d8d9da] px-4 py-2 rounded-full">
+                PROCEED TO CHECK-OUT
               </button>
             </Link>
           </div>

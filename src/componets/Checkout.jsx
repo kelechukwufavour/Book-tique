@@ -1,17 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
+import MastercardLogo from "../assets/mastercard.png"; // Replace with actual image paths
+import VisaLogo from "../assets/visa.png"; // Replace with actual image paths
+import PaystackLogo from "../assets/paystack.png"; // Replace with actual image paths
+import VerveLogo from "../assets/verve.png"; // Replace with actual image paths
 
 const Checkout = () => {
   return (
-    <div className="w-full h-auto flex items-center justify-center flex-col p-10">
-      <h2 className="text-4xl md:text-6xl text-[#6A5ACD]">Checkout</h2>
-      <div className="flex flex-col md:flex-row justify-between items-start w-full mt-8">
+    <div className="w-full h-auto flex items-center justify-center flex-col p-4 md:p-10">
+      <h2 className="flex justify-center items-center text-[24px] md:text-[40px] text-[#626263]">
+        Shopping Cart
+        <FaAngleRight className="w-6 h-6 md:w-8 md:h-8" />
+        <span className="text-[#6A5ACD]/50">Checkout</span>
+      </h2>
+      <p className="text-black relative">
+        Returning customer?{" "}
+        <Link to="/login" className="text-[#6A5ACD]/75">
+          Click here to login
+        </Link>
+        <hr className="absolute left-0 bottom-0 w-full border-t-2 border-gray-500 mt-1" />
+      </p>
+      <div className="flex flex-col md:flex-row w-full mt-4">
         {/* Billing Details Form */}
         <div className="md:w-2/3 md:pr-8">
-          <div className="bg-white rounded shadow-md border border-[#6A5ACD] p-6 mb-6">
-            <h3 className="text-2xl md:text-4xl font-bold mb-4">Billing Details</h3>
-            <form className="space-y-4">
+          <div className="bg-white rounded shadow-md p-6 mb-6">
+            <h3 className="text-2xl md:text-4xl font-bold mb-4">BILLING DETAILS</h3>
+            <form className="space-y-4" method="post">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block font-medium">
@@ -20,7 +35,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="firstName"
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border border-[#6A5ACD] rounded-full"
                     required
                   />
                 </div>
@@ -31,7 +46,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="lastName"
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border border-[#6A5ACD] rounded-full"
                     required
                   />
                 </div>
@@ -43,7 +58,7 @@ const Checkout = () => {
                 <input
                   type="text"
                   id="address"
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border border-[#6A5ACD] rounded-full"
                   required
                 />
               </div>
@@ -55,7 +70,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="state"
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border border-[#6A5ACD] rounded-full"
                     required
                   />
                 </div>
@@ -66,7 +81,7 @@ const Checkout = () => {
                   <input
                     type="text"
                     id="city"
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border border-[#6A5ACD] rounded-full"
                     required
                   />
                 </div>
@@ -79,7 +94,7 @@ const Checkout = () => {
                   <input
                     type="email"
                     id="email"
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border border-[#6A5ACD] rounded-full"
                     required
                   />
                 </div>
@@ -90,7 +105,7 @@ const Checkout = () => {
                   <input
                     type="tel"
                     id="phone"
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border border-[#6A5ACD] rounded-full"
                     required
                   />
                 </div>
@@ -101,49 +116,59 @@ const Checkout = () => {
                 </label>
                 <textarea
                   id="orderNotes"
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border border-[#6A5ACD] rounded-full"
                   rows="4"
                 ></textarea>
               </div>
             </form>
           </div>
         </div>
-
-        {/* Payment Options */}
-        <div className="md:w-1/3 md:mt-6 md:ml-8">
+        {/* Order Summary & Payment Options */}
+        <div className="md:w-1/3 md:mt-6 md:ml-8 space-y-6">
           <div className="bg-white rounded shadow-md border border-[#6A5ACD] p-6">
-            <h3 className="text-2xl md:text-4xl font-bold mb-4">Payment Options</h3>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <input type="radio" id="paystack" name="payment" className="mr-2" />
-                <label htmlFor="paystack" className="font-medium">
-                  Paystack
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input type="radio" id="mastercard" name="payment" className="mr-2" />
-                <label htmlFor="mastercard" className="font-medium">
-                  Mastercard
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input type="radio" id="visa" name="payment" className="mr-2" />
-                <label htmlFor="visa" className="font-medium">
-                  Visa
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input type="radio" id="verve" name="payment" className="mr-2" />
-                <label htmlFor="verve" className="font-medium">
-                  Verve
-                </label>
+            <h3 className="text-xl md:text-2xl font-bold mb-1">YOUR ORDER</h3>
+            <div className="flex justify-between mb-2 text-xs md:text-sm">
+              <span>Product</span>
+              <span>Subtotal</span>
+            </div>
+            <hr className="border-t border-gray-300 my-2" />
+            <div className="flex justify-between mb-2 text-xs md:text-sm">
+              <span>Item Name</span>
+              <span>₦Subtotal</span>
+            </div>
+            <hr className="border-t border-gray-300 my-2" />
+            <div className="flex justify-between font-bold text-lg mb-4 md:text-sm">
+              <span>Total</span>
+              <span>₦Total</span>
+            </div>
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <p className="text-xs text-center text-[black]">
+                Secured by Paystack
+              </p>
+            </div>
+            <div className="flex items-center justify-center space-x-2">
+              {/* Logos in a single box */}
+              <div className="bg-white border border-[#6A5ACD] rounded-lg p-2 md:p-4 w-full text-center">
+                <div className="flex items-center justify-center space-x-2 md:space-x-4 mt-2">
+                  <img src={MastercardLogo} alt="Mastercard" className="h-6 md:h-8 mx-auto" />
+                  <img src={VisaLogo} alt="Visa" className="h-6 md:h-8 mx-auto" />
+                  <img src={PaystackLogo} alt="Paystack" className="h-6 md:h-8 mx-auto" />
+                  <img src={VerveLogo} alt="Verve" className="h-6 md:h-8 mx-auto" />
+                </div>
               </div>
             </div>
+            <p className="text-xs text-center text-[black] mt-2">
+              Make your payment using debit and credit cards
+            </p>
             <Link to="/final-checkout">
-              <button className="w-full bg-blue-500 text-white px-4 py-2 rounded mt-6">
-                Proceed to Final Checkout
+              <button className="w-full md:w-auto bg-[#6A5ACD] text-[#d8d9da] px-4 py-2 rounded-full mt-6">
+                PROCEED TO CHECKOUT
               </button>
             </Link>
+            <p className="text-[black] mt-1">
+              Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our{" "}
+              <span className="text-[#6A5ACD]/75">Privacy policy</span>.
+            </p>
           </div>
         </div>
       </div>
