@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
-import MastercardLogo from "../assets/mastercard.png"; // Replace with actual image paths
-import VisaLogo from "../assets/visa.png"; // Replace with actual image paths
-import PaystackLogo from "../assets/paystack.png"; // Replace with actual image paths
-import VerveLogo from "../assets/verve.png"; // Replace with actual image paths
+import MastercardLogo from "../assets/mastercard.png";
+import VisaLogo from "../assets/visa.png";
+import PaystackLogo from "../assets/paystack.png";
+import VerveLogo from "../assets/verve.png";
 
 const Checkout = ({ cartItems }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // State to track selected payment method
@@ -24,7 +24,7 @@ const Checkout = ({ cartItems }) => {
     return total.toFixed(2);
   };
 
-  console.log(cartItems); // Log cart items to check if they are correctly received
+  console.log("Cart Items:", cartItems);
 
   return (
     <div className="w-full h-auto flex items-center justify-center flex-col p-4 md:p-10">
@@ -39,16 +39,16 @@ const Checkout = ({ cartItems }) => {
           Click here to login
         </Link>
       </p>
-      <hr className="w-full border-t-2 border-gray-500 mt-1" />
+      <hr className="w-3/4 border-t-2 border-gray-400 mt-1" />
       <div className="flex flex-col md:flex-row w-full mt-4">
         {/* Billing Details Form */}
         <div className="md:w-2/3 md:pr-8">
           <div className="bg-white rounded shadow-md p-6 mb-6">
-            <h3 className="text-2xl md:text-4xl font-bold mb-4">BILLING DETAILS</h3>
+            <h3 className="text-2xl md:text-4xl font-bold mb-2">BILLING DETAILS</h3>
             <form className="space-y-4" method="post">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="firstName" className="block font-medium">
+                  <label htmlFor="firstName" className="block font-small">
                     First Name
                   </label>
                   <input
@@ -59,7 +59,7 @@ const Checkout = ({ cartItems }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block font-medium">
+                  <label htmlFor="lastName" className="block font-small">
                     Last Name
                   </label>
                   <input
@@ -71,7 +71,7 @@ const Checkout = ({ cartItems }) => {
                 </div>
               </div>
               <div>
-                <label htmlFor="address" className="block font-medium">
+                <label htmlFor="address" className="block font-small">
                   Address
                 </label>
                 <input
@@ -83,7 +83,7 @@ const Checkout = ({ cartItems }) => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="state" className="block font-medium">
+                  <label htmlFor="state" className="block font-small">
                     State
                   </label>
                   <input
@@ -94,7 +94,7 @@ const Checkout = ({ cartItems }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="city" className="block font-medium">
+                  <label htmlFor="city" className="block font-small">
                     City
                   </label>
                   <input
@@ -107,7 +107,7 @@ const Checkout = ({ cartItems }) => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="email" className="block font-medium">
+                  <label htmlFor="email" className="block font-small">
                     Email Address
                   </label>
                   <input
@@ -118,7 +118,7 @@ const Checkout = ({ cartItems }) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block font-medium">
+                  <label htmlFor="phone" className="block font-small">
                     Phone
                   </label>
                   <input
@@ -130,12 +130,12 @@ const Checkout = ({ cartItems }) => {
                 </div>
               </div>
               <div>
-                <label htmlFor="orderNotes" className="block font-medium">
+                <label htmlFor="orderNotes" className="block font-small">
                   Order Notes
                 </label>
                 <textarea
                   id="orderNotes"
-                  className="w-full p-2 border border-[#6A5ACD] rounded-full"
+                  className="w-full p-2 border border-[#6A5ACD] rounded"
                   rows="4"
                 ></textarea>
               </div>
@@ -162,9 +162,10 @@ const Checkout = ({ cartItems }) => {
             ) : (
               <p>No items in cart</p>
             )}
-            <hr className="border-t border-gray-300 my-2" />
-            <div className="flex items-center justify-center mb-4">
-              <p className="text-xs text-[black] mt-2">
+            <hr className="border-t border-gray-300 my-6" />
+            <p className="text-xs text-[black] mt-2 font-bold">Paystack</p>
+            <div className="flex items-center justify-center mb-2">
+              <p className="text-xs text-[black] mt-2 font-bold">
                 Secured by Paystack
               </p>
             </div>
