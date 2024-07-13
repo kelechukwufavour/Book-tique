@@ -41,7 +41,7 @@ const Cart = () => {
             </thead>
             <tbody className="border-b border-[#99AAB5]">
               {cartItems.map((item, index) => (
-                <tr key={index}>
+                <tr key={index} className="border-b border-gray-200">
                   <td className="py-2 px-4 flex items-center text-xs md:text-base">
                     <img
                       src={item.image}
@@ -50,7 +50,9 @@ const Cart = () => {
                     />
                     <span>{item.title}</span>
                   </td>
-                  <td className="py-2 px-4 text-xs md:text-base">{item.price.toLocaleString()}</td>
+                  <td className="py-2 px-4 text-xs md:text-base whitespace-nowrap">
+                    ₦{item.price.toLocaleString()}
+                  </td>
                   <td className="py-2 px-4 flex items-center text-xs md:text-base">
                     <button
                       onClick={() =>
@@ -79,8 +81,8 @@ const Cart = () => {
                       +
                     </button>
                   </td>
-                  <td className="py-2 px-4 text-xs md:text-base">
-                    {(item.price * item.quantity).toLocaleString()}
+                  <td className="py-2 px-4 text-xs md:text-base whitespace-nowrap">
+                    ₦{(item.price * item.quantity).toLocaleString()}
                   </td>
                   <td className="py-2 px-4 text-xs md:text-base">
                     <button
@@ -115,7 +117,7 @@ const Cart = () => {
             <hr className="border-t border-gray-300 my-2" />
             <Link to="/checkout">
               <button className="w-full md:w-auto bg-[#6A5ACD] text-[#d8d9da] px-4 py-2 rounded-full">
-                PROCEED TO CHECK-OUT
+                PROCEED TO CHECKOUT
               </button>
             </Link>
           </div>
