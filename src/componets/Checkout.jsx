@@ -10,7 +10,7 @@ const Checkout = ({ cartItems }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // State to track selected payment method
 
   const handlePaymentMethodClick = (logo) => {
-    setSelectedPaymentMethod(logo); // Update selected payment method state
+    setSelectedPaymentMethod(logo); 
   };
 
   // Calculate total from cart items

@@ -9,14 +9,13 @@ const Hero = () => {
         className="absolute inset-0 -z-10 w-full h-full object-cover"
       />
       <div className="w-full h-full p-3 bg-[#6A5ACD80]/50 z-10 flex items-center justify-center">
-        <div className="flex justify-center items-center flex-col">
-          <h1 className="text-white  text-[90px]  font-bold mb-10">
+        <div className="flex justify-center items-center flex-col text-center">
+          <h1 className="text-white text-[40px] md:text-[60px] lg:text-[90px] font-bold mb-4 md:mb-6 lg:mb-10">
             Welcome to <br />
             Booktique
           </h1>
-          <p className=" text-white text-[24px]">
-            Buy your books in an affordable price ,and it will be delivered to
-            you.{" "}
+          <p className="text-white text-[16px] md:text-[20px] lg:text-[24px] px-2 md:px-4">
+            Buy your books at an affordable price, and they will be delivered to you.
           </p>
         </div>
       </div>

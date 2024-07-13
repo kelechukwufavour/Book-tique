@@ -30,16 +30,16 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-col md:flex-row justify-between items-center py-4 mx-4 md:mx-24">
+    <header className="flex flex-wrap justify-between items-center py-4 mx-4 md:mx-24">
       <div>
         <a href="/">
           <img src="/logo.png" alt="logo" className="h-8 md:h-10" />
         </a>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center w-full md:w-[500px] mt-4 md:mt-0">
-        <a href="/" className="mb-2 md:mb-0 md:mr-4">Home</a>
-        <div className="relative border flex items-center justify-between w-full md:w-[300px] p-3 rounded-full border-[#F3EFEF]">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full md:w-auto mt-4 md:mt-0 space-y-4 md:space-y-0 md:space-x-4">
+        <a href="/" className="md:mr-4">Home</a>
+        <div className="relative border flex items-center justify-between w-full md:w-72 p-3 rounded-full border-[#F3EFEF]">
           <button className="m-0">
             <BsSearch className="text-[#0C0C0C]/50" />
           </button>
