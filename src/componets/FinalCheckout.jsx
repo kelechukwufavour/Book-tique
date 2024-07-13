@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PaystackLogo from "../assets/paystack.png"; // Replace with actual image path
+import PaystackLogo from "../assets/paystack.png"; 
 
 const FinalCheckout = ({ order }) => {
   const { orderNumber, date, total, paymentMethod } = order;

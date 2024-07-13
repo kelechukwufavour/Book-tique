@@ -37,7 +37,7 @@ const Footer = () => {
           Join Booktique nest, a platform where we share recommendations, bookish
           news, and discount codes.
         </p>
-        <button className="bg-white text-[#6A5ACD] px-6 py-3 rounded-full mt-4 md:mt-8">
+        <button className="bg-white text-[#6A5ACD] px-6 py-3 rounded-full mt-1 md:mt-2">
           Join Us
         </button>
       </div>
