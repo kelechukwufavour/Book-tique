@@ -5,6 +5,7 @@ import MastercardLogo from "../assets/mastercard.png";
 import VisaLogo from "../assets/visa.png";
 import PaystackLogo from "../assets/paystack.png";
 import VerveLogo from "../assets/verve.png";
+import {cartItems} from "./Cart";
 
 const Checkout = ({ cartItems }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // State to track selected payment method

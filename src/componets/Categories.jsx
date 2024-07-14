@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../CartContent";
 import { toast } from "react-toastify";
+import ProductList from "./Product";
 
 const categoriesData = {
     Fiction: [
@@ -147,6 +148,19 @@ const Category = () => {
   return (
     <div className="category-container p-6">
       <div className="category-header flex justify-between items-center mb-6">
+      <ProductList 
+        organizationId="123"
+        supplierId="456"
+        categoryId="789"
+        searchValue="shoe"
+        sortingKey="price"
+        startDt="2024-01-01"
+        endDt="2024-12-31"
+        page={1}
+        size={10}
+        currencyCode="NGN"
+        reverseSort={false}
+      />
         <select
           className="categories-button bg-[#6A5ACD] text-white px-4 py-2 rounded-full mr-2"
           onChange={(e) => setSelectedCategory(e.target.value)}
